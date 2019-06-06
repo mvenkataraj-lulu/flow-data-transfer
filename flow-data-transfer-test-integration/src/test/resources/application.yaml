@@ -1,0 +1,28 @@
+data-transfer-service:
+  client:
+    retry:
+      attempts: 4
+      backoff:
+        initialinterval: 3000
+        maxinterval: 5000
+        multiplier: 2
+    read:
+      timeout: 60000
+    connect:
+      timeout: 60000
+  auth:
+    header:
+      name: API-TOKEN
+  ssl:
+    enabled: false
+---
+spring:
+  profiles: local
+truststore:
+  path: xx
+  password: yy
+data-transfer-service:
+  url: http://localhost:8080/job/{action}
+  auth:
+    header:
+      value: test12345

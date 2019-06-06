@@ -1,0 +1,27 @@
+db:
+  driver-class-name: org.postgresql.Driver
+spring:
+  main:
+    allow-bean-definition-overriding: true
+metrics:
+  reporter:
+    enabled: true
+server:
+  port: 8080
+---
+spring:
+  profiles: local
+metrics:
+  reporter:
+    enabled: false
+db:
+  url: jdbc:postgresql://localhost:5432/flow_ods?currentSchema=flow_opr
+  username: kkumthekar
+  password: flow123
+  max-active: 10
+  initial-size: 5
+  max-idle: 5
+  min-idle: 1
+  test-while-idle: true
+  test-on-borrow: true
+  validation-query: SELECT 1
